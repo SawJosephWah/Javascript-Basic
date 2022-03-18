@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <h1>sdfjak</h1>
+</head>
+<body>
+    
+    <script>
+        function Car(brand , model){
+            this.brand = brand;
+            this.model = model;
+        }
+
+        Car.prototype.getInfos = function(){
+            return `${this.brand} : ${this.model}`;
+        }
+
+
+        function Toyota(brand , model , persons){
+            Car.call(this , brand , model );
+            this.persons = persons;
+        }
+        Toyota.prototype = Object.create(Car.prototype);
+
+        let toyota1 = new Toyota('Crown' , 2007 , 4);
+        console.log(toyota1.getInfos());
+
+        
+        
+       
+
+
+
+
+    </script>
+</body>
+</html>
