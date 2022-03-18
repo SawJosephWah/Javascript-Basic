@@ -5,19 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <div>
+        <ul id="data"></ul>
+    </div>
 </head>
 <body>
     <script>
+        var ul = document.querySelector('#data');
         function loadDoc() {
         var xhttp = new XMLHttpRequest();
         xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-            // document.getElementById("demo").innerHTML = this.responseText;
-            // console.log( );
-            console.log('loading');
-            // setTimeout(JSON.parse(this.responseText),1500)
-            console.log(JSON.parse(this.responseText));
-           
+        
+
+            let data = JSON.parse(this.responseText);
+            data.forEach((el) => {
+                var li = document.createElement("li");
+                li.appendChild(document.createTextNode(el.name));
+                ul.appendChild(li);
+              
+            })
+        
             }
         };
         xhttp.open("GET", "https://jsonplaceholder.typicode.com/users", true);
